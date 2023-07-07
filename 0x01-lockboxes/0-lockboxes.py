@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# lockboxes
+"""lockboxes module"""
 
 def canUnlockAll(boxes):
     x = len(boxes)
