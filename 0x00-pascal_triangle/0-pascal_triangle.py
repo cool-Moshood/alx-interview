@@ -3,6 +3,8 @@
 
 
 def pascal_triangle(n):
+    """Generate Pascal's triangle up to n rows."""
+
     triangle = []
     for row in range(n):
         current_row = []
@@ -10,6 +12,7 @@ def pascal_triangle(n):
             if col == 0 or col == row:
                 current_row.append(1)
             else:
-                current_row.append(triangle[row - 1][col - 1] + triangle[row - 1][col])
+                current_row.append(triangle[row - 1]
+                [col - 1] + triangle[row - 1][col])
         triangle.append(current_row)
     return triangle
