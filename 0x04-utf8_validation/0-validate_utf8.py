@@ -7,26 +7,19 @@ def validUTF8(data):
     """Determine the number of bytes for the current character
     Check that the next bytes have the pattern '10xxxxxx'
     """
-    num_bytes_to_read = 0
-    for byte in data:
-        if num_bytes_to_read == 0:
-            if byte >> 7 == 0b0:
-                num_bytes_to_read = 0
-            elif byte >> 5 == 0b110:
-                num_bytes_to_read = 1
-            elif byte >> 4 == 0b1110:
-                num_bytes_to_read = 2
-            elif byte >> 3 == 0b11110:
-                num_bytes_to_read = 3
-            else:
+    i = 0
+    while i < len(data):
+        num_set_bits = 0
+        byte = data[i]
+
+        while byte & (1 << (7 - num_set_bits)):
+            num_set_bits += 1
+        if num_set_bits == 1 or num_set_bits > 4:
+            return False
+
+        for j in range(1, num_set_bits):
+            i += 1
+            if i >= len(data) or (data[i] & 0b11000000) != 0b10000000:
                 return False
-        else:
-            if byte >> 6 != 0b10:
-                return False
-            num_bytes_to_read -= 1
-
-    return num_bytes_to_read == 0
-
-
-data = [467, 133, 108]
-print(validUTF8(data))
+        i += 1
+    return True
