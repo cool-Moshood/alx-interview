@@ -26,3 +26,7 @@ def validUTF8(data):
             num_bytes_to_read -= 1
 
     return num_bytes_to_read == 0
+
+
+data = [467, 133, 108]
+print(validUTF8(data))
