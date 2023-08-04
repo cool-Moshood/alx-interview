@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 """ A project on queens puzzle chess games with two queens"""
 
+
 import sys
 
 
 def generate_solutions(row, column):
     """Generate all possible solutions for placing queens on the chessboard."""
+
     if row == 0:
         return [[]]
     prev_solutions = generate_solutions(row - 1, column)
@@ -19,12 +21,14 @@ def generate_solutions(row, column):
 
 def is_safe(q, x, array):
     """Check if it is safe to place a queen in the given position."""
+
     return all(x != col and abs(q - row) != abs(x - col)
                for row, col in enumerate(array))
 
 
-def main():
+def n_queens():
     """Main function to handle user input and print solutions."""
+
     if len(sys.argv) != 2 or not sys.argv[1].isdigit():
         print("Usage: nqueens N\nN must be an integer greater or equal to 4")
         sys.exit(1)
@@ -38,4 +42,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    n_queens()
