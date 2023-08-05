@@ -30,7 +30,7 @@ def n_queens():
     """Main function to handle user input and print solutions."""
 
     if len(sys.argv) != 2 or not sys.argv[1].isdigit():
-        print("Usage: nqueens N\nN must be an integer greater or equal to 4")
+        print("Usage: nqueens N")
         sys.exit(1)
     N = int(sys.argv[1])
     if N < 4:
