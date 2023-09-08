@@ -6,8 +6,8 @@ def isWinner(x, nums):
     """Determines the winner of the game."""
 
     if not (isinstance(nums, list)
-        and all(isinstance(n, int) for n in nums)
-        and not any(n <= -1 for n in nums)):
+       and all(isinstance(n, int) for n in nums)
+       and not any(n <= -1 for n in nums)):
         return None
 
     if not isinstance(x, int) or x != len(nums):
